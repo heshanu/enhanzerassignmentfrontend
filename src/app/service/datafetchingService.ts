@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BookModel } from '../models/BookModel';
-import e from 'express';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +16,7 @@ export class DatafetchingService {
 }
 
 deleteBook(id: number): Observable<void> {
+  const headers = new HttpHeaders({ 'Accept': 'application/json' });
   return this.http.delete<void>(`${environment.apiUrl}/${id}`);
 }
 

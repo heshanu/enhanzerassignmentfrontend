@@ -31,8 +31,9 @@
   }
 
   <div class="loadmore" nz-list-load-more>
-    @if (!loadingMore) {
+    @if (!loadingMore && data.length >=5) {
       <button nz-button (click)="onLoadMore()">Load more</button>
     }
   </div>
+
 </nz-list>
