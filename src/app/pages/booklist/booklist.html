@@ -1,0 +1,34 @@
+<nz-list class="demo-loadmore-list" [nzLoading]="initLoading">
+  @for (item of data; track item.id) {
+    <nz-list-item>
+      @if (initLoading) {
+        <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="true" />
+      } @else {
+        <ng-container>
+          <nz-list-item-meta
+            nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            [nzDescription]="'ISBN: ' + item.isbn + ' | Published: ' + (item.publicationDate | date:'mediumDate')"
+          >
+            <nz-list-item-meta-title>
+              <a href="#">{{ item.title }}</a>
+            </nz-list-item-meta-title>
+            <nz-list-item-meta-description>
+              By {{ item.author }}
+            </nz-list-item-meta-description>
+          </nz-list-item-meta>
+
+          <ul nz-list-item-actions>
+            <nz-list-item-action><a (click)="edit(item)">edit</a></nz-list-item-action>
+            <nz-list-item-action><a (click)="delete(item.id)">delete</a></nz-list-item-action>
+          </ul>
+        </ng-container>
+      }
+    </nz-list-item>
+  }
+
+  <div class="loadmore" nz-list-load-more>
+    @if (!loadingMore) {
+      <button nz-button (click)="onLoadMore()">Load more</button>
+    }
+  </div>
+</nz-list>
