@@ -7,15 +7,19 @@
         <ng-container>
           <nz-list-item-meta
             nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-            [nzDescription]="'ISBN: ' + item.isbn + ' | Published: ' + (item.publicationDate | date:'mediumDate')"
+            [nzDescription]="descTpl"
           >
             <nz-list-item-meta-title>
-              <a href="#">{{ item.title }}</a>
+           
             </nz-list-item-meta-title>
-            <nz-list-item-meta-description>
-              By {{ item.author }}
-            </nz-list-item-meta-description>
           </nz-list-item-meta>
+
+          <ng-template #descTpl>
+             <p><strong>Book Name:</strong> {{ item.title }}</p>
+            <p><strong>Author:</strong> {{ item.author }}</p>
+            <p><strong>ISBN:</strong> {{ item.isbn }}</p>
+            <p><strong>Published:</strong> {{ item.publicationDate | date:'mediumDate' }}</p>
+          </ng-template>
 
           <ul nz-list-item-actions>
             <nz-list-item-action><a (click)="edit(item)">edit</a></nz-list-item-action>

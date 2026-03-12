@@ -4,7 +4,7 @@ import { of, Subscription } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzListModule } from 'ng-zorro-antd/list';
+import { NzListComponent, NzListModule } from 'ng-zorro-antd/list';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton'
 import e from 'express';
@@ -14,7 +14,8 @@ import { BookModel } from '../../models/BookModel';
 import { CommonModule, DatePipe } from '@angular/common';
 @Component({
   selector: 'app-booklist',
-  imports: [NzButtonModule, NzListModule, NzSkeletonModule, CommonModule,DatePipe],
+  imports: [NzButtonModule, NzListModule, NzSkeletonModule, 
+    CommonModule,DatePipe,],
   templateUrl: './booklist.html',
   styleUrl: './booklist.css',
 })
