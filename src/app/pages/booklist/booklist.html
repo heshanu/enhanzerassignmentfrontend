@@ -1,0 +1,36 @@
+<nz-list class="assignment-loadmore-list" [nzLoading]="initLoading">
+  @for (item of data; track item.id) {
+    <nz-list-item>
+      @if (initLoading) {
+        <nz-skeleton [nzAvatar]="true" [nzActive]="true" [nzTitle]="false" [nzLoading]="true" />
+      } @else {
+        <ng-container>
+          <nz-list-item-meta
+            nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            [nzDescription]="descTpl"
+          >
+          </nz-list-item-meta>
+
+          <ng-template #descTpl>
+             <p><strong>Book Name:</strong> {{ item.title }}</p>
+            <p><strong>Author:</strong> {{ item.author }}</p>
+            <p><strong>ISBN:</strong> {{ item.isbn }}</p>
+            <p><strong>Published:</strong> {{ item.publicationDate | date:'mediumDate' }}</p>
+          </ng-template>
+
+          <ul nz-list-item-actions>
+            <nz-list-item-action><a (click)="edit(item)">edit</a></nz-list-item-action>
+            <nz-list-item-action><a (click)="delete(item.id)">delete</a></nz-list-item-action>
+          </ul>
+        </ng-container>
+      }
+    </nz-list-item>
+  }
+
+  <div class="loadmore" nz-list-load-more>
+    @if (!loadingMore && data.length >=5) {
+      <button nz-button (click)="onLoadMore()">Load more</button>
+    }
+  </div>
+
+</nz-list>
