@@ -11,11 +11,14 @@ export class Bookservice {
 
   setBook(book: BookModel): void {
     this.selectedBook.next(book); 
-}
- getBook(): BookModel | null {
+  }
+
+  getBook(): BookModel | null {
     return this.selectedBook.getValue();
   }
+
   clearBook(): void {
     this.selectedBook.next(null);
   }
+  
 }

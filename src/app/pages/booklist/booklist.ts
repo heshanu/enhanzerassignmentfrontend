@@ -118,6 +118,7 @@ edit(item: BookModel): void {
   });
 }
 
+
 delete(id: number): void {
   this.confirmModal = this.modal.confirm({
     nzTitle: 'Do you want to delete this book?',
