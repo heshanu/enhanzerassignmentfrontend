@@ -79,43 +79,58 @@ initLoading = true;
   }
 
 edit(item: BookModel): void {
-  // ← set initial book in BehaviorSubject
-  this.bookState.setBook(item);
 
   this.modal.create<BookEditModalComponent>({
     nzTitle: 'Edit Book',
     nzContent: BookEditModalComponent,
     nzData: { book: item },
-    nzOkText: 'Save',
+    nzOkText: 'Save updates',
     nzCancelText: 'Cancel',
+
     nzOnOk: () => {
-      // ← get latest value from BehaviorSubject
+
       const updatedBook = this.bookState.getBook();
       if (!updatedBook) return false;
 
+      console.log("Inside update book: " + JSON.stringify(updatedBook));
+
+      const { id } = updatedBook;
+
       return new Promise((resolve, reject) => {
-        this.dataService.updateBook(updatedBook.id, updatedBook).subscribe({
-          next: (response) => {
-            this.data = this.data.map((b) =>
-              b.id === updatedBook.id ? response : b
-            );
+
+        this.dataService.updateBook(id, updatedBook).subscribe({
+
+          next: (updated) => {
+
+            const index = this.data.findIndex(book => book.id === id);
+
+            if (index !== -1) {
+              this.data[index] = updated;
+              this.cdr.markForCheck();
+            }
+
             this.msg.success('Book updated successfully');
-            this.bookState.clearBook();  // ← clear after save
-            this.cdr.markForCheck();
             resolve(true);
           },
+
           error: (err) => {
             console.error('Update failed:', err.status);
             this.msg.error('Failed to update book');
             reject(err);
           }
+
         });
+
       });
+
     },
+
     nzOnCancel: () => {
-      this.bookState.clearBook();  // ← clear on cancel
+      this.bookState.clearBook();
     }
+
   });
+
 }
 
 

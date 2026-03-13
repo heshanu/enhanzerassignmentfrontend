@@ -11,6 +11,8 @@ export class Bookservice {
 
   setBook(book: BookModel): void {
     this.selectedBook.next(book); 
+    console.log(this.selectedBook);
+    
   }
 
   getBook(): BookModel | null {

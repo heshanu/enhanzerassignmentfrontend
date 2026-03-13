@@ -1,4 +1,4 @@
-<nz-list class="demo-loadmore-list" [nzLoading]="initLoading">
+<nz-list class="assignment-loadmore-list" [nzLoading]="initLoading">
   @for (item of data; track item.id) {
     <nz-list-item>
       @if (initLoading) {
@@ -9,9 +9,6 @@
             nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
             [nzDescription]="descTpl"
           >
-            <nz-list-item-meta-title>
-           
-            </nz-list-item-meta-title>
           </nz-list-item-meta>
 
           <ng-template #descTpl>

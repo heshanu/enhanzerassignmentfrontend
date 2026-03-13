@@ -21,6 +21,12 @@ import { Bookservice } from '../../service/bookservice';
   ],
   template: `
 <form nz-form [formGroup]="form" nzLayout="vertical">
+   <nz-form-item>
+    <nz-form-label nzRequired>Id</nz-form-label>
+    <nz-form-control nzErrorTip="Title is required">
+      <input nz-input formControlName="id" />
+    </nz-form-control>
+  </nz-form-item>
   <nz-form-item>
     <nz-form-label nzRequired>Title</nz-form-label>
     <nz-form-control nzErrorTip="Title is required">
@@ -66,6 +72,7 @@ export class BookEditModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
+      id: ['', Validators.required],
       title: ['', Validators.required],
       author: ['', Validators.required],
       isbn: ['', Validators.required],
@@ -80,7 +87,7 @@ export class BookEditModalComponent implements OnInit {
   update() {
     if (this.form.valid) {
      this.bookService.setBook(this.form.value);
-     this.modalRef.destroy(); 
+     console.log("this is book: " + JSON.stringify(this.bookService.getBook()));
     }
   }
 
