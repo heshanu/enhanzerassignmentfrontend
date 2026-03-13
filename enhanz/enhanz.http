@@ -1,0 +1,46 @@
+@enhanz_HostAddress = http://localhost:5101
+
+### Get all books
+GET {{enhanz_HostAddress}}/api/v1/booklist
+Accept: application/json
+
+###
+
+### Get book by ID
+GET {{enhanz_HostAddress}}/api/v1/booklist/1
+Accept: application/json
+
+###
+
+### Add new book
+POST {{enhanz_HostAddress}}/api/v1/booklist
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Harry Potter",
+  "author": "JK Rolling",
+  "isbn": "9780132350884",
+  "publicationDate": "2008-08-01"
+}
+
+###
+
+### Update book
+PUT {{enhanz_HostAddress}}/api/v1/booklist/1
+Content-Type: application/json
+
+{
+  "title": "Clean Code Updated",
+  "author": "Robert C Martin",
+  "isbn": "9780132350884",
+  "publicationDate": "2008-08-01"
+}
+
+###
+
+### Delete book
+DELETE {{enhanz_HostAddress}}/api/v1/booklist/1
+Accept: application/json
+
+###

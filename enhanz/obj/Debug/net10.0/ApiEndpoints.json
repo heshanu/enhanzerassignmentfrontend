@@ -1,0 +1,81 @@
+[
+  {
+    "ContainingType": "enhanz.Controllers.BooksController",
+    "Method": "GetBooks",
+    "RelativePath": "api/v1/booklist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "enhanz.Controllers.BooksController",
+    "Method": "AddBook",
+    "RelativePath": "api/v1/booklist",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "book",
+        "Type": "enhanz.Models.Book",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "enhanz.Controllers.BooksController",
+    "Method": "GetBook",
+    "RelativePath": "api/v1/booklist/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "enhanz.Controllers.BooksController",
+    "Method": "UpdateBook",
+    "RelativePath": "api/v1/booklist/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "book",
+        "Type": "enhanz.Models.Book",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "enhanz.Controllers.BooksController",
+    "Method": "DeleteBook",
+    "RelativePath": "api/v1/booklist/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
