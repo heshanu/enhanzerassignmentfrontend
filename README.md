@@ -1,59 +1,98 @@
-# Bookassignment
+#Book Management System
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.7.
+##Assignment for Enhanzer
 
-## Development server
+A full-stack book management application built with Angular and .net
 
-To start a local development server, run:
+## Features
 
-```bash
-ng serve
+- **Landing Page** - Hero section with featured books showcase
+- **Book Management** - Full CRUD operations (Create, Read, Update, Delete)
+
+
+## Tech Stack
+
+| Layer    | Technology                  |
+|----------|-----------------------------|
+| Frontend | Angular 20, TypeScript      |
+| Backend  | ASP.NET Core Web API, C#    |
+| Storage  | In-memory (ArrayList)       |
+| Styling  | NG-ZORROW angular library   |
+
+## Project Structure
+
+```
+BMS/
+├── BookAPI/                    # ASP.NET Core Web API
+│   ├── Controllers/
+│   │   
+│   │   └── BooksController.cs  # Book CRUD endpoints
+│   ├── Models/
+    
+│   │   ├── Book.cs             # Book entity (Title, Author, ISBN, PublicationDate, Subject)
+│   │   └─
+│   ├── Services/
+│   │   ├── BookService.cs      # Book business logic with seed data
+│   │   └── UserService.cs      # User/auth business logic
+│   └── Program.cs              # App configuration, CORS, DI
+└── BMS.sln                     # Solution file
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## API Endpoints
 
-## Code scaffolding
+### Books
+| Method | Endpoint           | Description       |
+|--------|--------------------|--------------------|
+| GET    | https://localhost:7257/api/v1/booklist          | Get all books      |
+| GET    | /https://localhost:7257/api/v1/booklist/:id     | Get book by ID     |
+| POST   |https://localhost:7257/api/v1/booklist           | Add a new book     |
+| PUT    |https://localhost:7257/api/v1/booklist/:id       | Update a book      |
+| DELETE | https://localhost:7257/api/v1/booklist          | Delete a book      |
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Book Model
+| Field            | Type     | Description                        |
+|------------------|----------|------------------------------------|
+| id               | int      | Auto-generated ID                  |
+| title            | string   | Book title                         |
+| author           | string   | Author name                        |
+| isbn             | string   | ISBN number                        |
+| publicationDate  | DateTime | Publication date                   |
 
-```bash
-ng generate component component-name
-```
+## Prerequisites
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [Node.js](https://nodejs.org/) (v18+)
+- [Angular CLI](https://angular.dev/) (`npm install -g @angular/cli`)
 
-```bash
-ng generate --help
-```
+## Getting Started
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### 1. Clone the repository
 
 ```bash
-ng e2e
+git clone <repository-url>
+cd 
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### 2. Run the backend
 
-## Additional Resources
+```bash
+cd enhanz
+dotnet run
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The API will start at `http://localhost:5023`. Swagger UI is available at `http://localhost:5023/swagger`.
+
+### 3. Run the frontend
+
+```bash
+cd booklistfrontend-main/bookassignment
+npm install
+npm start
+```
+
+The app will be available at `http://localhost:4200`.
+
+## Usage
+
+1. Open `http://localhost:4200` to see the landing page
+2. Click **Get Started** to go to the login page
