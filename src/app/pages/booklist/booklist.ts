@@ -17,11 +17,14 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { BookEditModalComponent } from './book-edit-modal.component';
 import { Bookservice } from '../../service/bookservice';
+import { PrimengModule } from '../../shared/primeng/primeng-module';
+import { Charts } from "../../shared/charts/charts";
+import { ChartVertical } from '../../shared/chart-vertical/chart-vertical';
 @Component({
   selector: 'app-booklist',
-  imports: [NzButtonModule, NzListModule, NzSkeletonModule, 
-    CommonModule,DatePipe,NzModalModule,FormsModule,ReactiveFormsModule,NzFormModule,NzInputModule,  
-  ],
+  imports: [NzButtonModule, NzListModule, NzSkeletonModule,
+    CommonModule, DatePipe, NzModalModule, FormsModule, ReactiveFormsModule, NzFormModule,
+    NzInputModule, PrimengModule, Charts,ChartVertical],
   templateUrl: './booklist.html',
   styleUrl: './booklist.css',
 })
@@ -30,7 +33,7 @@ export class Booklist implements OnInit,OnDestroy {
   editForm!: FormGroup;
   isEditVisible = false;
   selectedBook!: BookModel;
-initLoading = true; 
+  initLoading = true; 
  count = 5;
   backendUrl = environment.apiUrl;
   loadingMore = false;
@@ -38,7 +41,7 @@ initLoading = true;
   confirmModal?: NzModalRef;
   updateModal?: NzModalRef;
   datafetchingSubscription!: Subscription;
-
+   chartDataValue: any[] = [];
   constructor(
     private http: HttpClient,
     private msg: NzMessageService,
@@ -56,6 +59,34 @@ initLoading = true;
   formValues!:any;
 
   ngOnInit(): void {
+  const documentStyle = getComputedStyle(document.documentElement);
+  this.chartDataValue = [
+      {
+        label: 'My First dataset',
+        backgroundColor: documentStyle.getPropertyValue('--blue-500'),
+        borderColor: documentStyle.getPropertyValue('--blue-500'),
+        data: [65, 59, 80, 81, 56, 55, 40]
+      },
+      {
+        label: 'My Second dataset',
+        backgroundColor: documentStyle.getPropertyValue('--pink-500'),
+        borderColor: documentStyle.getPropertyValue('--pink-500'),
+        data: [28, 48, 40, 19, 86, 27, 9]
+      },
+       {
+        label: 'My third dataset',
+        backgroundColor: documentStyle.getPropertyValue('--blue-500'),
+        borderColor: documentStyle.getPropertyValue('--blue-500'),
+        data: [65, 59, 80, 81, 56, 55, 40]
+      },
+      {
+        label: 'My Fourth dataset',
+        backgroundColor: documentStyle.getPropertyValue('--pink-500'),
+        borderColor: documentStyle.getPropertyValue('--pink-500'),
+        data: [28, 48, 40, 19, 86, 27, 9]
+      }
+    ];
+
    this.datafetchingSubscription = this.dataService.getAllBooks().subscribe((books) => { 
       this.data = books;
       this.initLoading = false;

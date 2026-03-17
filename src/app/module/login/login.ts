@@ -12,7 +12,7 @@ import { Spinnerservice } from '../../service/spinnerservice';
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
-export class Login implements OnInit, OnDestroy{
+export class Login implements OnInit{
   isLoading = false;
   constructor(private spinnerService:Spinnerservice) { 
 
@@ -23,9 +23,6 @@ export class Login implements OnInit, OnDestroy{
     });
   }
 
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
 
  private fb = inject(NonNullableFormBuilder);
   validateForm = this.fb.group({

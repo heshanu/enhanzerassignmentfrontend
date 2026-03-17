@@ -32,5 +32,16 @@
       <button nz-button (click)="onLoadMore()">Load more</button>
     }
   </div>
-
 </nz-list>
+
+<app-charts 
+[chartDataLabels]="['heshan', 'umayanga', 'kavindu', 'tharindu']" 
+[chartDataValue]="[540, 325, 702, 620]" 
+[chartType]="'bar'" 
+[chartColor]="'red'"/>
+
+<app-chart-vertical
+  [chartDataValue]="chartDataValue"
+[chartDataLabels]="['heshan', 'umayanga', 'kavindu ', 'tharindu']"
+[chartType]="'bar'"
+[chartColor]="'#42A5F5'"/>
