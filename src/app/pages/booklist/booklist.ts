@@ -20,11 +20,13 @@ import { Bookservice } from '../../service/bookservice';
 import { PrimengModule } from '../../shared/primeng/primeng-module';
 import { Charts } from "../../shared/charts/charts";
 import { ChartVertical } from '../../shared/chart-vertical/chart-vertical';
+import { Card } from "../../shared/card/card";
+import { Pagination } from '../../compoents/pagination/pagination';
 @Component({
   selector: 'app-booklist',
   imports: [NzButtonModule, NzListModule, NzSkeletonModule,
     CommonModule, DatePipe, NzModalModule, FormsModule, ReactiveFormsModule, NzFormModule,
-    NzInputModule, PrimengModule, Charts,ChartVertical],
+    NzInputModule, PrimengModule, Charts, ChartVertical, Card,Pagination],
   templateUrl: './booklist.html',
   styleUrl: './booklist.css',
 })
@@ -34,7 +36,7 @@ export class Booklist implements OnInit,OnDestroy {
   isEditVisible = false;
   selectedBook!: BookModel;
   initLoading = true; 
- count = 5;
+  count = 5;
   backendUrl = environment.apiUrl;
   loadingMore = false;
   data: BookModel[] = [];

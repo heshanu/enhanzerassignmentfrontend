@@ -1,6 +1,5 @@
 import { Component, input, Input, OnInit } from '@angular/core';
 import { PrimengModule } from '../primeng/primeng-module';
-import { ChartModule } from 'primeng/chart';
 
 @Component({
   selector: 'app-charts',
